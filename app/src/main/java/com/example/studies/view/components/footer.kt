@@ -54,7 +54,7 @@ fun Footer(navController: NavController, currentRoute: String?) {
             icon = Icons.Default.Settings,
             label = "Configurações",
             isSelected = currentRoute == "settings", // Rota fictícia para a tela de configurações
-            onClick = { /* Implementar navegação para configurações */ }
+            onClick = { navController.navigate("settings") }
         )
     }
 }
