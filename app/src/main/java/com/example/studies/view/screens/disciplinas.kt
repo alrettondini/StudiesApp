@@ -41,7 +41,7 @@ fun DisciplinesScreen(navController: NavController) {
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(16.dp)
+                    .padding(30.dp)
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -50,12 +50,12 @@ fun DisciplinesScreen(navController: NavController) {
                 ) {
                     Text(
                         text = "Suas Disciplinas",
-                        fontSize = 24.sp,
-                        color = Color(0xFF424242),
+                        fontSize = 30.sp,
+                        color = Color(0xFF0E0E0E),
                         modifier = Modifier.padding(bottom = 16.dp)
                     )
                     FloatingActionButton(
-                        onClick = { /* TODO: Navegar para a tela de adicionar nova tarefa */ },
+                        onClick = { /*  Navegar para a tela de adicionar nova tarefa */ },
                         containerColor = Color(0xFF6B6969), // Cor do FAB
                         contentColor = Color.White,
                         modifier = Modifier.size(48.dp) // Ajustar o tamanho do FAB

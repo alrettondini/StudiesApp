@@ -8,10 +8,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,14 +38,14 @@ fun HomeScreen(navController: NavController) {
 
     // Simulação de dados para as aulas do dia
     val todaySubjects = listOf(
-        Subject("Disciplina 1", "08:00 - 10:00", "Local"),
+        Subject("Disciplina 1", "08:00 - 10:00", "Local"), //internacionalizar
         Subject("Disciplina 2", "14:00 - 16:00", "Local"),
         Subject("Disciplina 3", "16:00 - 18:00", "Local")
     )
 
     val currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM", Locale("pt", "BR")))
 
-    Column(
+    Column( //TEXTO "AULAS DO DIA" E HELLO USER
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
@@ -50,14 +53,20 @@ fun HomeScreen(navController: NavController) {
                 .weight(1f)
                 .padding(16.dp)
         ) {
+            Spacer(modifier = Modifier.height(45.dp))
             Text(
                 text = "Olá, ${userName.value}!",
-                fontSize = 24.sp,
+                fontSize = 30.sp,
                 color = Color(0xFF424242),
-                modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(7.dp))
+
+            HorizontalDivider(
+                color = Color(0xFF0E0E0E),
+                thickness = 2.dp,
+                modifier = Modifier.padding(bottom = 45.dp)
+            )
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -65,23 +74,23 @@ fun HomeScreen(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Aulas do dia",
-                    fontSize = 20.sp,
-                    color = Color(0xFF424242)
+                    text = "Aulas do dia", //internacionalizar
+                    fontSize = 33.sp,
+                    color = Color(0xFF0E0E0E)
                 )
                 Text(
                     text = currentDate,
-                    fontSize = 18.sp,
-                    color = Color(0xFF424242)
+                    fontSize = 25.sp,
+                    color = Color(0xFF0E0E0E)
                 )
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.padding(bottom = 30.dp))
 
             LazyColumn {
                 items(todaySubjects) { subject ->
                     SubjectCard(subject = subject)
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(25.dp))
                 }
             }
         }
@@ -90,17 +99,20 @@ fun HomeScreen(navController: NavController) {
 }
 
 @Composable
-fun SubjectCard(subject: Subject) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .border(1.dp, Color(0xFF6B6969), RoundedCornerShape(8.dp))
-            .padding(16.dp)
-    ) {
-        Text(text = subject.time, fontSize = 16.sp, color = Color(0xFF424242))
-        Spacer(modifier = Modifier.height(4.dp))
-        Text(text = subject.name, fontSize = 18.sp, color = Color(0xFF424242))
-        Text(text = subject.location, fontSize = 14.sp, color = Color(0xFF6B6969))
+fun SubjectCard(subject: Subject) { //CARD DAS DISCIPLINAS
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Text(text = subject.time, fontSize = 25.sp, color = Color(0xFF0E0E0E), modifier = Modifier.align(Alignment.CenterHorizontally))
+        HorizontalDivider(
+            color = Color(0xFF0E0E0E),
+            thickness = 1.dp,
+            modifier = Modifier.padding(bottom = 3.dp)
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Text(text = subject.name, fontSize = 22.sp, color = Color(0xFF0E0E0E), modifier = Modifier.align(Alignment.CenterHorizontally))
+        Text(text = subject.location,
+            fontSize = 16.sp,
+            color = Color(0xFF0E0E0E),
+            modifier = Modifier.align(Alignment.CenterHorizontally))
     }
 }
 

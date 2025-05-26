@@ -3,12 +3,13 @@ package com.example.studies.view.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,36 +25,41 @@ import com.example.studies.ui.theme.StudiesTheme
 
 @Composable
 fun Footer(navController: NavController, currentRoute: String?) {
+    HorizontalDivider(
+        color = Color(0xFF0E0E0E),
+        thickness = 2.5.dp
+    )
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-            .background(Color(0xFF424242)), // Cor do footer
+            .background(Color(0xFFC4C4C4)), // Cor do footer
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ) {
         FooterItem(
             icon = Icons.Default.Home,
-            label = "Home",
+            label = "",
             isSelected = currentRoute == "home",
             onClick = { navController.navigate("home") }
         )
         FooterItem(
             icon = Icons.AutoMirrored.Filled.List,
-            label = "Disciplinas",
+            label = "",
             isSelected = currentRoute == "disciplines",
             onClick = { navController.navigate("disciplines") }
         )
         FooterItem(
             icon = Icons.Default.DateRange,
-            label = "Calendário",
-            isSelected = currentRoute == "calendar", // Rota fictícia para a tela de calendário
+            label = "",
+            isSelected = currentRoute == "calendar",
             onClick = { /* Implementar navegação para calendário */ }
         )
         FooterItem(
             icon = Icons.Default.Settings,
-            label = "Configurações",
-            isSelected = currentRoute == "settings", // Rota fictícia para a tela de configurações
+            label = "",
+            isSelected = currentRoute == "settings",
             onClick = { /* Implementar navegação para configurações */ }
         )
     }
@@ -63,7 +69,7 @@ fun Footer(navController: NavController, currentRoute: String?) {
 fun FooterItem(icon: ImageVector, label: String, isSelected: Boolean, onClick: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Bottom,
         modifier = Modifier
             .clickable(onClick = onClick)
             .padding(8.dp)
@@ -71,13 +77,8 @@ fun FooterItem(icon: ImageVector, label: String, isSelected: Boolean, onClick: (
         Icon(
             imageVector = icon,
             contentDescription = label,
-            tint = if (isSelected) Color.White else Color(0xFFCDCDCD), // Destaque para o selecionado
-            modifier = Modifier.size(24.dp)
-        )
-        Text(
-            text = label,
-            color = if (isSelected) Color.White else Color(0xFFCDCDCD),
-            modifier = Modifier.padding(top = 4.dp)
+            tint = if (isSelected) Color.White else Color(0xFF393939),
+            modifier = Modifier.size(35.dp)
         )
     }
 }
