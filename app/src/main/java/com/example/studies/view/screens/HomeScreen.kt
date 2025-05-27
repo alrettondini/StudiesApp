@@ -3,20 +3,17 @@ package com.example.studies.view.screens
 import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,6 +24,7 @@ import com.example.studies.ui.theme.StudiesTheme
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Locale
+import com.example.studies.R
 
 data class Subject(val name: String, val time: String, val location: String)
 
@@ -38,9 +36,9 @@ fun HomeScreen(navController: NavController) {
 
     // Simulação de dados para as aulas do dia
     val todaySubjects = listOf(
-        Subject("Disciplina 1", "08:00 - 10:00", "Local"), //internacionalizar
-        Subject("Disciplina 2", "14:00 - 16:00", "Local"),
-        Subject("Disciplina 3", "16:00 - 18:00", "Local")
+        Subject(stringResource(id = R.string.D1), "08:00 - 10:00", stringResource(id = R.string.HomeLocal)),
+        Subject(stringResource(id = R.string.D2), "14:00 - 16:00", stringResource(id = R.string.HomeLocal)),
+        Subject(stringResource(id = R.string.D4), "16:00 - 18:00", stringResource(id = R.string.HomeLocal))
     )
 
     val currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM", Locale("pt", "BR")))
@@ -55,7 +53,7 @@ fun HomeScreen(navController: NavController) {
         ) {
             Spacer(modifier = Modifier.height(45.dp))
             Text(
-                text = "Olá, ${userName.value}!",
+                text = stringResource(id = R.string.Ola_Inicio, userName.value),
                 fontSize = 30.sp,
                 color = Color(0xFF424242),
             )
@@ -74,7 +72,7 @@ fun HomeScreen(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Aulas do dia", //internacionalizar
+                    text = stringResource(id = R.string.AulasDoDia),
                     fontSize = 33.sp,
                     color = Color(0xFF0E0E0E)
                 )
