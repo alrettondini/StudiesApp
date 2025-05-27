@@ -48,7 +48,7 @@ fun Footer(navController: NavController, currentRoute: String?) {
             icon = Icons.Default.DateRange,
             label = "Calendário",
             isSelected = currentRoute == "calendar", // Rota fictícia para a tela de calendário
-            onClick = { /* Implementar navegação para calendário */ }
+            onClick = { navController.navigate("addTask") }
         )
         FooterItem(
             icon = Icons.Default.Settings,

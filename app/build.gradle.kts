@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.activity.compose) // Suporte a Activity para Compose
     implementation(libs.material3)
     implementation (libs.google.accompanist.systemuicontroller)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
