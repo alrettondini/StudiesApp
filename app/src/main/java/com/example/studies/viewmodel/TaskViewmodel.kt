@@ -59,6 +59,15 @@ class TaskViewModel : ViewModel() {
         _tasks.value = currentTasks // Notifica observadores
     }
 
+    fun selectTaskById(taskId: String) {
+        // Encontre a tarefa na sua lista de tarefas (tasks.value)
+        // e atualize _selectedTask.value
+        val task = tasks.value?.find { it.id == taskId } // Assumindo que Task tem um 'id' do tipo String
+        _selectedTask.value = task
+        // Se a tarefa não for encontrada, _selectedTask.value será null,
+        // e TaskDetailScreen vai dar popBackStack(), o que é um comportamento razoável.
+    }
+
     fun updateTask(updatedTask: Task) {
         val currentTasks = _tasks.value ?: mutableListOf()
         val index = currentTasks.indexOfFirst { it.id == updatedTask.id }
