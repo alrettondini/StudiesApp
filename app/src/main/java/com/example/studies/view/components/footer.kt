@@ -34,7 +34,7 @@ fun Footer(navController: NavController, currentRoute: String?) {
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
-            .background(Color(0xFFC4C4C4)), // Cor do footer
+            .background(Color(0xFFC4C4C4)),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -47,14 +47,14 @@ fun Footer(navController: NavController, currentRoute: String?) {
         FooterItem(
             icon = Icons.AutoMirrored.Filled.List,
             label = "",
-            isSelected = currentRoute == "disciplines",
-            onClick = { navController.navigate("disciplines") }
+            isSelected = currentRoute == "tasks",
+            onClick = { navController.navigate("tasks") }
         )
         FooterItem(
             icon = Icons.Default.DateRange,
             label = "",
-            isSelected = currentRoute == "calendar",
-            onClick = { /* Implementar navegação para calendário */ }
+            isSelected = currentRoute == "disciplines",
+            onClick = { navController.navigate("disciplines") }
         )
         FooterItem(
             icon = Icons.Default.Settings,

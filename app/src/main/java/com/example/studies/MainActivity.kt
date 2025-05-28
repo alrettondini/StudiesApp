@@ -21,6 +21,8 @@ import com.example.studies.view.screens.HomeScreen
 import com.example.studies.view.screens.DisciplinesScreen
 import com.example.studies.view.screens.WelcomeScreen
 import com.example.studies.ui.theme.StudiesTheme
+import com.example.studies.view.screens.AddDisciplineScreen
+import com.example.studies.view.screens.TasksScreen
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -62,6 +64,12 @@ fun StudiesApp() {
         }
         composable("disciplines") {
             DisciplinesScreen(navController = navController)
+        }
+        composable("add_discipline") {
+            AddDisciplineScreen(navController = navController)
+        }
+        composable("tasks"){
+            TasksScreen(navController = navController)
         }
         // Você pode adicionar mais composables para outras telas aqui
     }
