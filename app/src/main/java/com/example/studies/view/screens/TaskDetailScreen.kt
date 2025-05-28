@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign // Importar TextAlign
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,7 +45,6 @@ fun TaskDetailScreen(
     }
 
     Scaffold(
-        // topBar = null, // Mantendo sem TopAppBar conforme sua preferência anterior
         bottomBar = {
             Footer(navController = navController, currentRoute = "taskDetail")
         },
@@ -55,7 +54,7 @@ fun TaskDetailScreen(
                     .fillMaxSize()
                     .padding(paddingValues)
                     .padding(start = 16.dp, end = 16.dp, top = 100.dp),
-                horizontalAlignment = Alignment.Start // Nome e Disciplina ficam à esquerda
+                horizontalAlignment = Alignment.Start
             ) {
                 Text(
                     text = task.name,
@@ -75,14 +74,13 @@ fun TaskDetailScreen(
                     modifier = Modifier
                         .padding(top = 5.dp, start = 27.dp, bottom = 16.dp)
                 )
-                Spacer(modifier = Modifier.height(32.dp)) // Removido para juntar com a primeira seção centralizada
+                Spacer(modifier = Modifier.height(32.dp))
 
-                // Seção Descrição - Centralizada
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 20.dp, end = 20.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally // Centraliza os Textos filhos
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
                         text = "Descrição:",
@@ -94,18 +92,16 @@ fun TaskDetailScreen(
                     Text(
                         text = task.description,
                         fontSize = 20.sp,
-                        textAlign = TextAlign.Left // Centraliza o texto da descrição se for multilinhas
-                        // Ou TextAlign.Start para alinhar à esquerda dentro do bloco centralizado
+                        textAlign = TextAlign.Left
                     )
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Seção Prazo de entrega - Centralizada
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp), // Espaçamento da seção
-                    horizontalAlignment = Alignment.CenterHorizontally // Centraliza os Textos filhos
+                        .padding(vertical = 8.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
                         text = "Prazo de entrega:",
@@ -130,21 +126,20 @@ fun TaskDetailScreen(
                         Text(
                             text = it,
                             fontSize = 20.sp,
-                            textAlign = TextAlign.Center // Centraliza o texto
+                            textAlign = TextAlign.Center
                         )
                     } ?: Text(
                         text = "Não definido",
                         fontSize = 20.sp,
-                        textAlign = TextAlign.Center // Centraliza o texto
+                        textAlign = TextAlign.Center
                     )
                 }
-                Spacer(modifier = Modifier.height(16.dp)) // Removido
+                Spacer(modifier = Modifier.height(16.dp))
 
-                // Seção Status - Centralizada
                 Column(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally // Centraliza os Textos filhos
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
                         text = "Status:",
@@ -157,11 +152,11 @@ fun TaskDetailScreen(
                         text = if (task.isCompleted) "Concluída" else "Pendente",
                         fontSize = 20.sp,
                         color = if (task.isCompleted) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
-                        textAlign = TextAlign.Center // Centraliza o texto
+                        textAlign = TextAlign.Center
                     )
                 }
 
-                Spacer(modifier = Modifier.weight(1f)) // Empurra os botões para baixo
+                Spacer(modifier = Modifier.weight(1f))
 
                 Button(
                     onClick = {
@@ -201,7 +196,6 @@ fun TaskDetailScreen(
     )
 }
 
-// Previews (mantenha ou ajuste seus previews para refletir as mudanças)
 @Preview(showBackground = true, name = "TaskDetailScreen Centered Sections")
 @Composable
 fun TaskDetailScreenCenteredPreview() {

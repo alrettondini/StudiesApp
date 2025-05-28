@@ -19,10 +19,9 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF6B6969), // Cor escura para o gradiente
-    secondary = Color(0xFFCDCDCD), // Cor clara para o gradiente
+    primary = Color(0xFF6B6969),
+    secondary = Color(0xFFCDCDCD),
     tertiary = Color(0xFF424242),
-    // Considere definir explicitamente:
     background = Color.Transparent,
     surface = Color.Transparent
 )

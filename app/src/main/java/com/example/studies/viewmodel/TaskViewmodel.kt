@@ -9,16 +9,13 @@ import java.time.LocalTime
 
 class TaskViewModel : ViewModel() {
 
-    // Lista de tarefas observável
     private val _tasks = MutableLiveData<MutableList<Task>>(mutableListOf())
     val tasks: LiveData<MutableList<Task>> = _tasks
 
-    // Tarefa atualmente selecionada para a tela de detalhes
     private val _selectedTask = MutableLiveData<Task?>(null)
     val selectedTask: LiveData<Task?> = _selectedTask
 
     init {
-        // Dados mockados iniciais
         addMockTasks()
     }
 
@@ -47,25 +44,21 @@ class TaskViewModel : ViewModel() {
                 discipline = "Desenvolvimento Mobile",
                 description = "Fazer os tutoriais da documentação oficial do Google sobre Jetpack Compose e ViewModels. Praticar a criação de interfaces responsivas.",
                 dueDate = LocalDate.now().plusWeeks(1),
-                dueTime = null // Sem hora específica
+                dueTime = null
             )
         )
-        _tasks.value = _tasks.value // Garante que o LiveData seja atualizado
+        _tasks.value = _tasks.value
     }
 
     fun addTask(task: Task) {
         val currentTasks = _tasks.value ?: mutableListOf()
         currentTasks.add(task)
-        _tasks.value = currentTasks // Notifica observadores
+        _tasks.value = currentTasks
     }
 
     fun selectTaskById(taskId: String) {
-        // Encontre a tarefa na sua lista de tarefas (tasks.value)
-        // e atualize _selectedTask.value
-        val task = tasks.value?.find { it.id == taskId } // Assumindo que Task tem um 'id' do tipo String
+        val task = tasks.value?.find { it.id == taskId }
         _selectedTask.value = task
-        // Se a tarefa não for encontrada, _selectedTask.value será null,
-        // e TaskDetailScreen vai dar popBackStack(), o que é um comportamento razoável.
     }
 
     fun updateTask(updatedTask: Task) {
@@ -81,7 +74,7 @@ class TaskViewModel : ViewModel() {
         val currentTasks = _tasks.value ?: mutableListOf()
         _tasks.value = currentTasks.filter { it.id != taskId }.toMutableList()
         if (_selectedTask.value?.id == taskId) {
-            _selectedTask.value = null // Limpa a tarefa selecionada se ela for deletada
+            _selectedTask.value = null
         }
     }
 
@@ -90,7 +83,7 @@ class TaskViewModel : ViewModel() {
         val taskToComplete = currentTasks.find { it.id == taskId }
         taskToComplete?.let {
             it.isCompleted = true
-            updateTask(it) // Atualiza a tarefa na lista
+            updateTask(it)
         }
     }
 

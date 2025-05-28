@@ -2,8 +2,8 @@ package com.example.studies.view.screens
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.widget.DatePicker // Mantenha este import
-import android.widget.TimePicker // Mantenha este import
+import android.widget.DatePicker
+import android.widget.TimePicker
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -39,35 +39,31 @@ fun AddTaskScreen(
     var selectedTime by remember { mutableStateOf<LocalTime?>(null) }
 
     val context = LocalContext.current
-    // Não precisamos mais dos states year, month, day, hour, minute separados aqui
 
-    // Date Picker Dialog
     val datePickerDialog = remember {
-        val calendar = Calendar.getInstance() // Pegar a instância atual para valores iniciais
+        val calendar = Calendar.getInstance()
         DatePickerDialog(
             context,
-            { _: DatePicker, year: Int, month: Int, dayOfMonth: Int -> // month é 0-indexed aqui
+            { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
                 selectedDate = LocalDate.of(year, month + 1, dayOfMonth)
             },
-            // Valores iniciais padrão (serão atualizados antes de mostrar de qualquer forma)
+
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
         )
     }
 
-    // Time Picker Dialog
     val timePickerDialog = remember {
-        val calendar = Calendar.getInstance() // Pegar a instância atual para valores iniciais
+        val calendar = Calendar.getInstance()
         TimePickerDialog(
             context,
             { _: TimePicker, hourOfDay: Int, minute: Int ->
                 selectedTime = LocalTime.of(hourOfDay, minute)
             },
-            // Valores iniciais padrão (serão atualizados antes de mostrar de qualquer forma)
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),
-            true // is24HourView
+            true
         )
     }
 
@@ -103,7 +99,7 @@ fun AddTaskScreen(
                     trailingIcon = { Icon(Icons.Default.ArrowDropDown, contentDescription = "Dropdown") },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { /* Futuramente, abrir um DropdownMenu para seleção */ }
+                        .clickable { /*  */ }
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -129,11 +125,10 @@ fun AddTaskScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Campo de Data com Box clicável
                     Box(
                         modifier = Modifier
                             .weight(1f)
-                            .clickable { // A lógica do clique para abrir o seletor permanece aqui
+                            .clickable {
                                 val calendar = Calendar.getInstance()
                                 val yearToShow = selectedDate?.year ?: calendar.get(Calendar.YEAR)
                                 val monthToShow = selectedDate?.monthValue?.minus(1) ?: calendar.get(Calendar.MONTH)
@@ -141,31 +136,30 @@ fun AddTaskScreen(
                                 datePickerDialog.updateDate(yearToShow, monthToShow, dayToShow)
                                 datePickerDialog.show()
                             }
-                            .border( // Adiciona uma borda para simular o OutlinedTextField
+                            .border(
                                 width = 1.dp,
-                                color = MaterialTheme.colorScheme.outline, // Cor da borda padrão
-                                shape = MaterialTheme.shapes.extraSmall // Forma padrão (geralmente cantos arredondados)
+                                color = MaterialTheme.colorScheme.outline,
+                                shape = MaterialTheme.shapes.extraSmall
                             )
-                            .padding(horizontal = 16.dp, vertical = 12.dp) // Padding interno similar ao de um TextField
+                            .padding(horizontal = 16.dp, vertical = 12.dp)
                     ) {
-                        Column { // Para organizar o rótulo e o valor
+                        Column {
                             Text(
-                                text = "Data", // Seu texto de rótulo
-                                color = MaterialTheme.colorScheme.primary, // Cor para o rótulo (pode ajustar)
-                                style = MaterialTheme.typography.bodySmall // Estilo para o rótulo (pode ajustar)
+                                text = "Data",
+                                color = MaterialTheme.colorScheme.primary,
+                                style = MaterialTheme.typography.bodySmall
                             )
-                            Spacer(modifier = Modifier.height(2.dp)) // Pequeno espaço entre rótulo e valor
+                            Spacer(modifier = Modifier.height(2.dp))
                             Text(
                                 text = selectedDate?.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)) ?: "DD/MM/AAAA",
-                                color = MaterialTheme.colorScheme.onSurface, // Cor do texto principal (não "apagado")
-                                style = MaterialTheme.typography.bodyLarge // Estilo do texto principal (pode ajustar)
+                                color = MaterialTheme.colorScheme.onSurface,
+                                style = MaterialTheme.typography.bodyLarge
                             )
                         }
                     }
 
                     Spacer(modifier = Modifier.width(8.dp))
 
-                    // Campo de Horário com Box clicável
                     Box(
                         modifier = Modifier
                             .weight(1f)

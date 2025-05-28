@@ -1,8 +1,8 @@
 package com.example.studies.view.screens
 
-import android.app.TimePickerDialog // <<< NOVO IMPORT
+import android.app.TimePickerDialog
 import android.util.Log
-import android.widget.TimePicker // <<< NOVO IMPORT
+import android.widget.TimePicker
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -25,7 +25,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.studies.R
 import com.example.studies.ui.theme.StudiesTheme
 import com.example.studies.view.components.Footer
-import java.util.Calendar
 import java.util.Locale
 
 data class DaySchedule(
@@ -209,7 +208,6 @@ fun AddDisciplineScreen(navController: NavController) {
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            // TimePicker para Início
                             TimePickerField(
                                 label = stringResource(R.string.inicio_label),
                                 time = dayInfo.startTime,
@@ -221,7 +219,6 @@ fun AddDisciplineScreen(navController: NavController) {
                                     }
                                 }
                             )
-                            // TimePicker para Término
                             TimePickerField(
                                 label = stringResource(R.string.termino_label),
                                 time = dayInfo.endTime,

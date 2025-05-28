@@ -34,7 +34,7 @@ fun HomeScreen(navController: NavController) {
     val context = LocalContext.current
     val userName = remember { mutableStateOf(loadUserName(context)) }
 
-    // Simulação de dados para as aulas do dia
+
     val todaySubjects = listOf(
         Subject(stringResource(id = R.string.D1), "08:00 - 10:00", stringResource(id = R.string.HomeLocal)),
         Subject(stringResource(id = R.string.D2), "14:00 - 16:00", stringResource(id = R.string.HomeLocal)),
@@ -43,7 +43,7 @@ fun HomeScreen(navController: NavController) {
 
     val currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM", Locale("pt", "BR")))
 
-    Column( //TEXTO "AULAS DO DIA" E HELLO USER
+    Column(
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
@@ -97,7 +97,7 @@ fun HomeScreen(navController: NavController) {
 }
 
 @Composable
-fun SubjectCard(subject: Subject) { //CARD DAS DISCIPLINAS
+fun SubjectCard(subject: Subject) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(text = subject.time, fontSize = 25.sp, color = Color(0xFF0E0E0E), modifier = Modifier.align(Alignment.CenterHorizontally))
         HorizontalDivider(

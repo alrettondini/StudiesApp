@@ -33,9 +33,9 @@ fun WelcomeScreen(navController: NavController) {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Bem-Vindo(a)!", //internacionalizar
+            text = "Bem-Vindo(a)!",
             fontSize = 32.sp,
-            color = Color(0xFF424242), // Cor do texto
+            color = Color(0xFF424242),
             modifier = Modifier.padding(bottom = 32.dp)
         )
 
@@ -62,7 +62,7 @@ fun WelcomeScreen(navController: NavController) {
             onClick = {
                 saveUserName(context, userName)
                 navController.navigate("home") {
-                    popUpTo("welcome") { inclusive = true } // Remove a WelcomeScreen da back stack
+                    popUpTo("welcome") { inclusive = true }
                 }
             },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF6B6969)),
