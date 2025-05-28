@@ -54,7 +54,7 @@ fun TasksScreen(navController: NavController) {
                     color = Color(0xFF0E0E0E)
                 )
                 FloatingActionButton(
-                    onClick = { },
+                    onClick = { navController.navigate("addTask") },
                     containerColor = Color(0xFF6B6969),
                     contentColor = Color.White,
                     modifier = Modifier.size(40.dp),
