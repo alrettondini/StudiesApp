@@ -8,26 +8,23 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalView
-
-
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFF6B6969), // Cor escura para o gradiente
-    secondary = Color(0xFFCDCDCD), // Cor clara para o gradiente
+    primary = Color(0xFF6B6969),
+    secondary = Color(0xFFCDCDCD),
     tertiary = Color(0xFF424242)
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF6B6969),
-    secondary = Color(0xFFCDCDCD),
-    tertiary = Color(0xFF424242)
-
-
+    primary = Color(0xFF6B6969), // Cor escura para o gradiente
+    secondary = Color(0xFFCDCDCD), // Cor clara para o gradiente
+    tertiary = Color(0xFF424242),
+    // Considere definir explicitamente:
+    background = Color.Transparent,
+    surface = Color.Transparent
 )
 
 @Composable
@@ -40,15 +37,16 @@ fun StudiesTheme(
         else -> LightColorScheme
     }
 
-
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(
                 brush = Brush.verticalGradient(
-                    colors = listOf(Color(0xFFCDCDCD), Color(0xFF6B6969)),
-                    startY = 0f,
-                    endY = Float.POSITIVE_INFINITY
+                    colorStops = arrayOf(
+                        0.0f to Color(0xFFCDCDCD),
+                        0.5f to Color(0xFFCDCDCD),
+                        1.0f to Color(0xFFC4C4C4)
+                    )
                 )
             )
     ) {
