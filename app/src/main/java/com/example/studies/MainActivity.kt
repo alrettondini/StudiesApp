@@ -22,6 +22,7 @@ import com.example.studies.view.screens.HomeScreen
 import com.example.studies.view.screens.DisciplinesScreen
 import com.example.studies.view.screens.WelcomeScreen
 import com.example.studies.ui.theme.StudiesTheme
+import com.example.studies.view.screens.SettingsScreen
 import com.example.studies.view.screens.AddTaskScreen
 import com.example.studies.viewmodel.TaskViewModel
 import com.example.studies.view.screens.AddDisciplineScreen
@@ -69,6 +70,9 @@ fun StudiesApp() {
         }
         composable("disciplines") {
             DisciplinesScreen(navController = navController)
+        }
+        composable("settings") {
+            SettingsScreen(navController = navController)
         }
         composable("addTask") {
             AddTaskScreen(navController = navController, viewModel = taskViewModel)

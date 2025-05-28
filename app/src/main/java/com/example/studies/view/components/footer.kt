@@ -58,9 +58,9 @@ fun Footer(navController: NavController, currentRoute: String?) {
         )
         FooterItem(
             icon = Icons.Default.Settings,
-            label = "",
+            label = "Configurações",
             isSelected = currentRoute == "settings",
-            onClick = { /* Implementar navegação para configurações */ }
+            onClick = { navController.navigate("settings") }
         )
     }
 }

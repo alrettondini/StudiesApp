@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Studies</string>
+    <string name="configuracoes_screen_top_bar_title">Configurações</string> <string name="configuracoes_main_title">Configurações</string>
+    <string name="sobre_button">Sobre</string>
+    <string name="contato_button">Contato</string>
+    <string name="sobre_icon_desc">Ícone de informação</string>
+    <string name="contato_icon_desc">Ícone de telefone</string>
     <string name="Ola_Inicio">Olá, %1$s!</string>
     <string name="AulasDoDia">Aulas do dia</string>
     <string name="HomeLocal">Local</string>
