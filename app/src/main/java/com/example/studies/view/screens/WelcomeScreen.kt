@@ -33,7 +33,7 @@ fun WelcomeScreen(navController: NavController) {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Bem-Vindo(a)!",
+            text = "Bem-Vindo(a)!", //internacionalizar
             fontSize = 32.sp,
             color = Color(0xFF424242), // Cor do texto
             modifier = Modifier.padding(bottom = 32.dp)

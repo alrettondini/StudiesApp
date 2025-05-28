@@ -23,9 +23,9 @@ import com.example.studies.view.screens.DisciplinesScreen
 import com.example.studies.view.screens.WelcomeScreen
 import com.example.studies.ui.theme.StudiesTheme
 import com.example.studies.view.screens.AddTaskScreen
-import com.example.studies.view.screens.TaskDetailScreen
-//import com.example.studies.view.screens.TaskDetailScreen
 import com.example.studies.viewmodel.TaskViewModel
+import com.example.studies.view.screens.AddDisciplineScreen
+import com.example.studies.view.screens.TasksScreen
 
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -73,10 +73,12 @@ fun StudiesApp() {
         composable("addTask") {
             AddTaskScreen(navController = navController, viewModel = taskViewModel)
         }
-        composable("a") {
-            TaskDetailScreen(navController = navController, viewModel = taskViewModel)
+        composable("add_discipline") {
+            AddDisciplineScreen(navController = navController)
         }
-        // Você pode adicionar mais composables para outras telas aqui
+        composable("tasks"){
+            TasksScreen(navController = navController)
+        }
     }
 }
 
