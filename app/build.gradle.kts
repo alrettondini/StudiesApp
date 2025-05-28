@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.studies"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -52,11 +52,11 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.core.ktx) // Funções de extensão Kotlin para APIs do Android
-    implementation(libs.androidx.lifecycle.runtime.ktx) // Componentes do ciclo de vida para Kotlin
-    implementation(libs.androidx.activity.compose) // Suporte a Activity para Compose
-    implementation(libs.material3)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
     implementation (libs.google.accompanist.systemuicontroller)
+    implementation(libs.androidx.runtime.livedata)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

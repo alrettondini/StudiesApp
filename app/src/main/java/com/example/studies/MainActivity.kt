@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -21,6 +22,8 @@ import com.example.studies.view.screens.HomeScreen
 import com.example.studies.view.screens.DisciplinesScreen
 import com.example.studies.view.screens.WelcomeScreen
 import com.example.studies.ui.theme.StudiesTheme
+import com.example.studies.view.screens.AddTaskScreen
+import com.example.studies.viewmodel.TaskViewModel
 import com.example.studies.view.screens.AddDisciplineScreen
 import com.example.studies.view.screens.TasksScreen
 
@@ -55,6 +58,8 @@ fun StudiesApp() {
 
     val startDestination = if (userNameSaved) "home" else "welcome"
 
+    val taskViewModel: TaskViewModel = viewModel()
+
     NavHost(navController = navController, startDestination = startDestination) {
         composable("welcome") {
             WelcomeScreen(navController = navController)
@@ -65,13 +70,15 @@ fun StudiesApp() {
         composable("disciplines") {
             DisciplinesScreen(navController = navController)
         }
+        composable("addTask") {
+            AddTaskScreen(navController = navController, viewModel = taskViewModel)
+        }
         composable("add_discipline") {
             AddDisciplineScreen(navController = navController)
         }
         composable("tasks"){
             TasksScreen(navController = navController)
         }
-        // Você pode adicionar mais composables para outras telas aqui
     }
 }
 
